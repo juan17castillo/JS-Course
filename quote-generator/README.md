@@ -1,0 +1,1 @@
+This project allows you to access the Random Quote API avoiding CORS errors through a proxy created with the Heroku tool. Different famous phrases can be accessed and tweeted. A modern aesthetic has been included.
