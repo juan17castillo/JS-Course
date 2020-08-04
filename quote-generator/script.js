@@ -64,5 +64,4 @@ newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 
 // Load Quotes
-// getQuote();
-loading();
+getQuote();
