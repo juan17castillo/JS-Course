@@ -52,6 +52,13 @@ async function getPhotos() {
     }
 }
 
+// Check the scrolling down when it is near to the screen bottom to display more images
+window.addEventListener('scroll', () => {
+   if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+        getPhotos();
+    }
+});
+
 
 //Show Photos on screen
 getPhotos();
