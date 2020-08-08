@@ -19,6 +19,8 @@ h1{
     letter-spacing: 3px;
 }
 
+/* Searchbar */
+
 /* Loader */
 .loader {
     position: fixed;
@@ -45,6 +47,7 @@ h1{
 .image-container img {
     width: 100%;
     margin-top: 5px;
+    border-radius: 3%;
 }
 
 /* Medias Querys for large smartphones */

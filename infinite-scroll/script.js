@@ -2,10 +2,13 @@
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
+let ready = false;
+let imagesLoaded = 0;
+let totalImages = 0;
 let photosArray = [];
 
 //Unsplash API
-const count = 10;
+const count = 30;
 const apiKey = "OaZggEPeOEeWf0PkOyGaMHCDXMI8klMcpwVk7PJjEjI";
 const query = "covid";
 const apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count}&query=${query}`;
@@ -17,8 +20,22 @@ function setAttributes(element, attributes) {
     }
 }
 
+// Check if all images were loaded
+function imageLoaded () {
+    console.log('image loaded');
+    imagesLoaded++;
+    if(imagesLoaded === totalImages){
+        loader.hidden = true;
+        ready = true;
+        console.log('ready=', ready);
+    }
+}
+
 //Create elements for links & photos, add to DOM
 function displayPhotos() {
+    imagesLoaded = 0;
+    totalImages = photosArray.length;
+    console.log('Total Images =', totalImages);
     photosArray.forEach((photo) => {
         // Create <a> to link to Unsplash
        const item = document.createElement('a');
@@ -33,9 +50,11 @@ function displayPhotos() {
            alt: photo.alt_description,
            title: photo.alt_despcription,
     })
-        //Put <img> inside <a>, then put both inside the image-container element
-        item.appendChild(img);
-        imageContainer.appendChild(item);
+    // Event Listener to check when each is finished loading
+    img.addEventListener('load', imageLoaded)
+    //Put <img> inside <a>, then put both inside the image-container element
+    item.appendChild(img);
+    imageContainer.appendChild(item);
     });
 }
 
@@ -54,8 +73,9 @@ async function getPhotos() {
 
 // Check the scrolling down when it is near to the screen bottom to display more images
 window.addEventListener('scroll', () => {
-   if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+   if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
         getPhotos();
+        ready = false;
     }
 });
 
