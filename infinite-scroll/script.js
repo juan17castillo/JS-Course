@@ -2,6 +2,11 @@
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
+// Search Query
+const searchBtn = document.getElementById('search');
+
+
+// Scrolling bar lets
 let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0;
@@ -10,8 +15,19 @@ let photosArray = [];
 //Unsplash API
 const count = 30;
 const apiKey = "OaZggEPeOEeWf0PkOyGaMHCDXMI8klMcpwVk7PJjEjI";
-const query = "covid";
-const apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count}&query=${query}`;
+let query = "";
+let apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count}&query=${query}`;
+
+// Search the query
+searchBtn.addEventListener('click', () => {
+    query = document.getElementById('search-input').value;
+    query.toString()
+    apiUrl = apiUrl + query;
+    apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count}&query=${query}`;
+    document.getElementById("image-container").innerHTML = "";
+    getPhotos();
+});
+
 
 // Helper function to Set attributes on DOM Elements
 function setAttributes(element, attributes) {
@@ -22,12 +38,10 @@ function setAttributes(element, attributes) {
 
 // Check if all images were loaded
 function imageLoaded () {
-    console.log('image loaded');
     imagesLoaded++;
     if(imagesLoaded === totalImages){
         loader.hidden = true;
         ready = true;
-        console.log('ready=', ready);
     }
 }
 
@@ -35,7 +49,6 @@ function imageLoaded () {
 function displayPhotos() {
     imagesLoaded = 0;
     totalImages = photosArray.length;
-    console.log('Total Images =', totalImages);
     photosArray.forEach((photo) => {
         // Create <a> to link to Unsplash
        const item = document.createElement('a');
@@ -62,10 +75,9 @@ function displayPhotos() {
 //Get Photos from Unsplash API
 async function getPhotos() {
     try {
-        const response = await fetch(apiUrl);
+        let response = await fetch(apiUrl);
         photosArray = await response.json();
         displayPhotos();
-        // console.log(photosArray);
     } catch(error){
         // console.log(error)
     }
@@ -82,3 +94,4 @@ window.addEventListener('scroll', () => {
 
 //Show Photos on screen
 getPhotos();
+

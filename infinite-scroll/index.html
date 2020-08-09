@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infinite Scroll</title>
     <link rel="icon" type="image/icon" href="http://www.google.com/s2/u/0/favicons?domain=jacinto.design">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"> 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Title -->
     <h1>Unsplash API - Infinite</h1>
-    <!-- Search bar -->
-    <!-- <input type="text" id="search"> -->
+    <!-- Search bar Container-->
+    <div class="search-container" id='search-container'>
+        <input type="text" class="search-input" id="search-input" placeholder="Search anything!">
+        <!-- Search button -->
+        <button class="search-button" id="search" title="Search this!">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
     <!-- Loader -->
     <div class="loader" id="loader">
         <img src="loader.svg" alt="Loading">
