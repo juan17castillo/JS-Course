@@ -75,6 +75,7 @@ h1{
     transition: 0.4s;
     color: white;
     cursor: pointer;
+    outline: none;
    }
    
    .search-btn > i {
