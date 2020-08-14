@@ -1,0 +1,1 @@
+This short project uses variables in CSS. From JS, the color modification is made with respect to the toggle to switch between dark and light mode. The color palette has been set to have good contrast and smooth gliding
