@@ -1,1 +1,1 @@
-This short project uses variables in CSS. From JS, the color modification is made with respect to the toggle to switch between dark and light mode. The color palette has been set to have good contrast and smooth gliding
+This short project uses variables in CSS. From JS, the color modification is made with respect to the toggle to switch between dark and light mode. Saves the current theme state to the user's local storage. The color palette has been set to have good contrast and smooth gliding
