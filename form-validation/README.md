@@ -1,0 +1,1 @@
+This small project is in charge of performing field validations for a form, both predefined and created in JS. It includes suggestions and password format based on good practices in user experience. The data is stored in an object to give it a later use (database, etc.)
