@@ -1,0 +1,1 @@
+This project is in charge of playing songs helping me to know how the elements of HTML interact dynamically with JS and CSS. It was helpful in exploring and identifying 'music' properties by searching the MDN Web Docs.
